@@ -1,0 +1,6 @@
+-   id: pylint
+    name: pylint
+    entry: run_pylint
+    language: python
+    types: [python]
+    require_serial: true
