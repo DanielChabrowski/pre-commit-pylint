@@ -63,12 +63,12 @@ def process_error_to_str(e: subprocess.CalledProcessError) -> str:
     )).decode()
 
 
-def install_virtualenv(venv_dir: str, requirements) -> int:
+def install_virtualenv(venv_dir: str, requirements_file) -> int:
     try:
         call(sys.executable, '-mvirtualenv', venv_dir)
 
         with venv_context(venv_dir):
-            call('pip', 'install', *requirements)
+            call('pip', 'install', '-r', requirements_file)
     except subprocess.CalledProcessError as e:
         print(process_error_to_str(e), file=sys.stderr)
         return e.returncode
